@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatunuma Özel 💕</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff6b9d;
+            --secondary-pink: #ff8fab;
+            --accent-purple: #8b5cf6;
+            --gradient-1: linear-gradient(135deg, #ff6b9d, #ff8fab, #8b5cf6);
+            --gradient-2: linear-gradient(45deg, #ff6b9d, #c084fc);
+            --dark-bg: #1a1a2e;
+            --light-text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            z-index: -2;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 7s; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 8s; }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+            margin: 0 auto;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: conic-gradient(from 0deg, transparent, var(--primary-pink), transparent);
+            z-index: -1;
+            border-radius: 30px;
+            padding: 2px;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-pink);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .login-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .pulse-heart {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-pink);
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .form-control:active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--secondary-pink);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-pink);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-2);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-login:hover::before {
+            left: 100%;
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            color: #ff4757;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .success-message {
+            color: #2ed573;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loading-spinner {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid var(--primary-pink);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hint-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .lock-icon {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: var(--primary-pink);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 576px) {
+            .login-container {
+                margin: 1rem auto; /* DÜZELTİLMİŞ KISIM */
+                padding: 2rem;
+            }
+            
+            .login-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    
+    <div class="floating-hearts">
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+        <div class="heart"><i class="fas fa-heart"></i></div>
+    </div>
+
+    <div class="login-container">
+        <div class="lock-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        
+        <div class="login-header">
+            <h1 class="login-title">Selim 💗 Hatice</h1>
+            <p class="login-subtitle">Lütfen Şifrenizi Giriniz Hatice Hanım</p>
+            <div class="pulse-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-key me-2"></i>
+                    Şifre
+                </label>
+                <div style="position: relative;">
+                    <input type="password" class="form-control" id="password" placeholder="Özel şifrenizi girin" required>
+                    <div class="password-toggle" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-heart me-2"></i>
+                Giriş Yap
+                <i class="fas fa-heart ms-2"></i>
+            </button>
+
+            <div class="loading-spinner" id="loadingSpinner"></div>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+        </form>
+
+        <div class="hint-text">
+            💕 Sadece hatunum bu sayfaya erişebilir💕
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Şifre (Bu değeri değiştirebilirsiniz)
+        const validPassword = "selimhatice52";
+
+        // Session kontrolü
+        let isLoggedIn = false;
+        let loginAttempts = 0;
+        const maxAttempts = 3;
+
+        // Sayfa yüklendiğinde session kontrol et
+        window.addEventListener('load', function() {
+            const sessionData = sessionStorage.getItem('lovesite_session');
+            if (sessionData) {
+                const session = JSON.parse(sessionData);
+                const currentTime = new Date().getTime();
+                
+                // Session 24 saat geçerli
+                if (currentTime - session.timestamp < 24 * 60 * 60 * 1000) {
+                    redirectToMainSite();
+                } else {
+                    sessionStorage.removeItem('lovesite_session');
+                }
+            }
+        });
+
+        // Şifre göster/gizle
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Login form submit
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const loginButton = document.querySelector('.btn-login');
+            const loginContainer = document.querySelector('.login-container');
+
+            // Önceki mesajları temizle
+            errorMessage.classList.remove('show');
+            successMessage.classList.remove('show');
+            loginContainer.classList.remove('shake');
+
+            // Maksimum deneme sayısı kontrolü
+            if (loginAttempts >= maxAttempts) {
+                showError('Çok fazla hatalı deneme! Lütfen daha sonra tekrar deneyin.');
+                return;
+            }
+
+            // Loading başlat
+            loadingSpinner.style.display = 'block';
+            loginButton.disabled = true;
+
+            // Gerçekçi loading süresi
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+                loginButton.disabled = false;
+
+                // Giriş kontrolü
+                if (password === validPassword) {
+                    // Başarılı giriş
+                    isLoggedIn = true;
+                    loginAttempts = 0;
+                    
+                    // Session oluştur
+                    const sessionData = {
+                        timestamp: new Date().getTime()
+                    };
+                    sessionStorage.setItem('lovesite_session', JSON.stringify(sessionData));
+                    
+                    showSuccess('Dogru Şifre Haticem :) 💕');
+                    
+                    // Ana siteye yönlendir
+                    setTimeout(() => {
+                        redirectToMainSite();
+                    }, 2000);
+                    
+                } else {
+                    // Hatalı giriş
+                    loginAttempts++;
+                    const remainingAttempts = maxAttempts - loginAttempts;
+                    
+                    if (remainingAttempts > 0) {
+                        showError(`Şifre hatalı! defol siteden bu haticeme özel: ${remainingAttempts}`);
+                    } else {
+                        showError('siktir git orosbu evladı');
+                    }
+                    
+                    // Shake animasyonu
+                    loginContainer.classList.add('shake');
+                    
+                    // Formu temizle
+                    document.getElementById('password').value = '';
+                    
+                    // Shake animasyonunu kaldır
+                    setTimeout(() => {
+                        loginContainer.classList.remove('shake');
+                    }, 500);
+                }
+            }, 1500);
+        });
+
+        // Hata mesajı göster
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.classList.add('show');
+            
+            setTimeout(() => {
+                errorMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        // Başarı mesajı göster
+        function showSuccess(message) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = message;
+            successMessage.classList.add('show');
+        }
+
+        // Ana siteye yönlendir
+        function redirectToMainSite() {
+            // Burada gerçek sitenizin URL'sini yazın
+            // window.location.href = 'main-site.html';
+            
+            // Demo için alert gösterelim
+            // alert('🎉 Hoş geldiniz! Ana siteye yönlendiriliyorsunuz...\n\n💕 Aşk dolu anlar geçirin! 💕');
+            
+            // Eğer ana siteniz hazırsa bu kısmı kullanın:
+            window.location.replace('main.html');
+        }
+
+        // Dinamik kalpler oluştur
+        function createFloatingHeart() {
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => {
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            });
+        }
+
+        // Sayfa yüklendiğinde kalpleri başlat
+        createFloatingHeart();
+        
+        // Her 10 saniyede bir kalp pozisyonlarını değiştir
+        setInterval(createFloatingHeart, 10000);
+
+        // Enter tuşu ile giriş
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+
+        // Sayfa yüklendiğinde şifre inputuna focus
+        window.addEventListener('load', function() {
+            document.getElementById('password').focus();
+        });
+
+        // Kopyalama ve sağ tık engelleme (opsiyonel güvenlik)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c' || e.key === 'v')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
